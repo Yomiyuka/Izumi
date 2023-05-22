@@ -1,0 +1,327 @@
+/* 全体 */
+body{
+    margin: 0 auto;
+    width: 1200px;
+        /* 全体のサイズを固定 */
+}
+a{
+    text-decoration: none;
+    color: #222222;
+}
+    a:hover{opacity: .5;}
+/* リンクにマウスを当てると色が薄まる */
+img{
+    width: 100%;
+}
+
+/* ヘッダー */
+/* まずは纏めて条件設定、個別に条件設定する場合はその */
+header{
+    display: flex;
+    /* ロゴとulを横に並べる */
+    justify-content: space-between;
+    align-items: center;
+    /* 縦真ん中そろえ */
+    color: #222222;
+    text-decoration: none;
+}
+    .header-list{
+        font-size: 21px;
+        display: flex;
+    }
+    .header-list li{
+        margin-left: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+/* mainvisual */
+.mainvisual{
+    position: relative;
+    display: flex;
+    }
+    .mainvisual h1{
+        font-size: 30px;
+        font-weight: bold;
+        padding: 30px;
+    }
+    .mainvisual p{
+        font-size: 25px;  
+    }
+    .mainvisual-text{
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform:  translate(-50%,-50%);
+        color: #fafafa;
+    }
+/* contents */
+.content{
+   text-align: center;
+}
+    h2{
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    }
+    h3{
+    font-size: 18px;
+    padding-bottom: 60px;
+    }
+/* about */
+.about{color: #ffd61a;}
+    .about-text{
+        line-height: 1.7;
+        font-size: 16px;
+        margin-bottom: 80px;
+        /* 親要素と子要素でMarginの設定が被っているが大きい方が適用されている */
+    }
+    .about-text div{
+        margin-bottom: 40px;
+    }
+.field{
+    display: flex;
+    flex-direction: row-reverse;
+   /* 写真の順番を逆にする */
+}
+/* course */
+.course-text{
+    line-height: 1.7;
+    padding-bottom: 60px;
+}
+    .course-content{
+        background-color: #fafafa;
+    }
+    .course-content li{
+        display: flex;
+        align-items: center;
+    }
+    .course-img{
+        width: 50%;
+    }
+        .textbox{
+            width: 50%;
+        }
+            .textbox h3{
+                font-size: 24px;
+                font-weight: bold;
+                padding-bottom: 40px;
+                text-align: left;
+            }
+            .textbox p{
+                text-align: left;
+                line-height: 1.7;
+                width: 430px;
+                }
+                .course-title01{
+                    padding-left: 50px;
+                }
+                .course-text01{
+                    padding-left: 50px;
+                }
+                    .course-title02{
+                        padding-left: 120px;
+                    }
+                    .course-text02{
+                        padding-left: 120px;
+                    }
+/* news */
+.news{
+    color: #ffd61a;
+    }
+    .news-content{
+        text-align: left;
+        justify-content: center;
+        /* 縦横中央揃え */
+        display: flex;
+        gap: 30px;
+        /* コンテンツの間 */
+        }
+    .pizza{
+        width: 300px;
+    }
+    .news-date{
+        padding-top: 30px;
+        padding-bottom: 24px;
+    }
+    .news-text{
+        width: 300px;
+    }
+
+/* Moreボタン */
+.yellow-card{
+    width: 300px;
+    height: 60px;
+    background-color: #ffd61a; 
+    text-align: center;
+    margin: 60px auto;
+}
+.buttun{
+    color: #fafafa;
+    display: block;
+    font-size: 18px;
+    padding: 21px; 
+}
+
+/* Access */
+.access-back{
+    background-color: #fafafa;
+    padding-bottom: 60px;
+    }
+    .map{
+        width: 100%;
+    }
+    .access-item{
+        margin: auto;
+    }
+        table{
+            text-align: left;
+            margin: 60px auto 0;  
+        }
+        th{
+            width: 200px;
+            height: 50px;
+        }
+/*contact  */
+.contact-text01,
+.contact-text02{
+    line-height: 1.7;
+    text-align: center;
+}
+.contact-text01{
+    padding-bottom: 30px;
+    }
+    .contact-form{
+        border-top: 3px solid #cacaca;
+        margin-bottom: 30px;
+        margin-top: 70px;
+            }
+        .form-item{
+            width: 240px; 
+            height: 36px;
+            padding: 8px 0px 8px 16px;
+            border-bottom: 1px solid #cacaca;
+            vertical-align: middle;
+        }
+        .cheese{
+            line-height: 1.5;
+            padding-right: 64px;
+        }
+        .form-body{
+            width: 400px;
+
+            border-bottom: 1px solid #cacaca;
+            border-left: 1px solid #cacaca;
+        }
+        .form-text{
+            width: 328px;
+            height: 36px;
+            margin: 8px;
+            border: 1px solid #cacaca;
+        }
+        .form-select{
+            width: 333px;
+            height: 36px;
+            margin: 8px;
+            border: 1px solid #cacaca;
+            appearance: none;
+        }
+        .form-checkbox{
+            margin: 8px;
+            font-size: 14px;  
+        }
+        .form-label{
+            margin: 24px auto 24px;
+            width: 390px;
+        }
+        .form-item2{
+            padding-left: 16px;
+            border-bottom: 1px solid #cacaca;
+            align-items: start;
+            /* 文字の位置を調整 */
+            vertical-align: middle;
+        }
+        .detail{
+            width: 328px;
+            height: 10em;
+            margin: 8px;
+            appearance: none;
+            border: 1px solid #cacaca;
+        }
+
+/*チェックボックス　デフォルト設定リセット */
+input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* チェックボックスデザイン かなり難しい*/
+input[type="checkbox"] {
+    cursor: pointer;
+    padding-left: 30px;
+    /*label手前にチェックボックス用の余白を開ける*/
+    vertical-align: middle;
+    position: relative;
+  }
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+    content: "";
+    display: block; 
+    position: absolute;
+}
+input[type="checkbox"]::before {
+    background-color: #cacaca;
+    border-radius: 0%;
+    border: none;
+    /* checkboxのサイズ */
+    width:  16px;
+    height: 16px;
+    /* checkboxの位置 */
+    transform: translateY(-50%);
+    top: 50%;
+    left: 5px;
+}
+input[type="checkbox"]::after {
+    border-bottom: 2px solid #222222;/*チェックの太さ*/
+    border-left: 2px solid #222222;/*チェックの太さ*/
+    opacity: 0;/*チェック前は非表示*/
+    /* チェックのサイズ */
+    height: 5px;
+    width: 8px;
+    transform: rotate(-45deg);
+    /* チェックの位置 */
+    top: -5px;
+    left: 8px;
+}
+input[type="checkbox"]:checked::after {
+    opacity: 1;/*チェック後表示*/
+}
+/* 送信ボタン */
+.yellow-card02{
+    width: 300px;
+    height: 60px;
+    background-color: #ffd61a; 
+    text-align: center;
+    margin: auto;
+}
+.buttun02{
+    color: #fafafa;
+    display: block;
+    font-size: 18px;
+    padding: 21px; 
+}
+/* フッター */
+.footer{
+    color: #fafafa;
+    background-color: #707070;
+    padding: 30px;
+    margin-top: 140px;
+    text-align: center;
+}
