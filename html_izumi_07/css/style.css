@@ -157,7 +157,7 @@ header{
     text-align: center;
     margin: 60px auto;
 }
-.buttun{
+.button{
     color: #fafafa;
     display: block;
     font-size: 18px;
@@ -311,7 +311,7 @@ input[type="checkbox"]:checked::after {
     text-align: center;
     margin: auto;
 }
-.buttun02{
+.button02{
     color: #fafafa;
     display: block;
     font-size: 18px;
