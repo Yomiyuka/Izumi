@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<Style>
+   
+</Style>
+<body>
+
+<header>
+  <h1>じゃんけん</h1>
+</header>
+
+<main>
+    <div id="Janken_result01">相手は「なに？？」</div>
+    <div>
+        <img id="Janken01" src="./img/jan.png" width="auto" height="300">
+    </div>
+    <ul>
+        <li onclick="Click('チョキ')">チョキ</li>
+        <li onclick="Click('グー')">グー</li>
+        <li onclick="Click('パー')">パー</li>
+    </ul>
+    <div>
+        <img id="Janken02" src="./img/jan.png" width="auto" height="300">
+    </div>
+    <div id="Janken_result02">あなたは「なに？？」</div>
+    <div id="Janken_result03"></div>
+</main>
+
+<footer></footer>
+<script> 
+ function Click(playersChoice) {
+      let computerHand = ['チョキ','グー','パー',];//リストの作成
+      let computersChoice = Math.floor( Math.random() * computerHand.length);//乱数を作ります
+    
+      let playerHand = ['チョキ','グー','パー'];//"プレイヤーのjanken"のリスト
+          //勝ち負けの判定機プログラム
+          if (playersChoice===computersChoice) {
+              Result = "DRAW";
+          } else if(playersChoice === 'チョキ' && computersChoice === 'パー') {
+              Result = "YOU WIN";
+          }else if(playersChoice === 'グー' && computersChoice === 'チョキ') {
+              Result = "YOU WIN";
+          }else if(playersChoice === 'パー' && computersChoice === 'グー') {
+              Result = "YOU WIN";
+          }else {
+              Result = "YOU LOSE";
+          }
+    
+        //結果を表示するためのプログラム
+        //画像の結果表示
+          document.getElementById("Janken_result01").innerHTML="相手は「"+computerHand[computersChoice]+"」"
+          document.getElementById("Janken01").src="./img/jan" + computersChoice + ".png";
+          document.getElementById("Janken02").src="./img/jan" + playersChoice + ".png";
+          document.getElementById("Janken_result02").innerHTML = "あなたは「"+playerHand[playersChoice] +"」";
+          document.getElementById("Janken_result03").innerHTML = Result;
+        // 背景色とフォントスタイルを設定する
+            if (Result === "YOU WIN") {
+            document.getElementById("Janken_result03").style.backgroundColor = "red";
+            document.getElementById("Janken_result03").style.fontWeight = "bold";
+            document.getElementById("Janken_result03").style.color = "yellow";
+            } else if (Result === "YOU LOSE") {
+            document.getElementById("Janken_result03").style.backgroundColor = "blue";
+            document.getElementById("Janken_result03").style.fontWeight = "normal";
+            document.getElementById("Janken_result03").style.color = "white";
+            } else if (Result === "DRAW") {
+            document.getElementById("Janken_result03").style.backgroundColor = "gold";
+            document.getElementById("Janken_result03").style.fontWeight = "normal";
+            document.getElementById("Janken_result03").style.color = "black";
+            }
+    }
+
+  </script>
+</body>
+</html>

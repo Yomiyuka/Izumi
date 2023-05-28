@@ -1,0 +1,42 @@
+body{
+    margin:0 auto;
+    width: 1200px;
+    text-align:center;
+    font-size: 32px;
+}
+header{
+    text-align: center;
+    border:1px solid #666;
+    margin: 20px auto;
+    width: 80%;
+    background-color: gold;
+
+}
+ul{
+    margin: 0 auto;
+    padding: 0;
+    display:table;  /* 各ボックスのサイズを揃える */
+    table-layout: fixed;
+    width:80%;
+}
+li{
+    text-align: center;
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    display:table-cell;  /* 定義 */
+    /* cursor: pointer; */
+}
+li:hover{
+    background: #0066CC;
+    color:#fff;
+}
+#Janken01{
+    transform: rotateX(180deg);
+}
+#Janken_result03{
+    margin: 30px auto;
+    width: 80%;
+    font-size: larger;
+    border:1px solid #666;
+}
