@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myMemoPad</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+<body>
+<header>
+<h1>MemoPad</h1>
+</header>
+<main>
+    <input type="text" id="key" placeholder="タイトル">
+    <textarea id="memo" placeholder="本文"></textarea>
+    <ul>
+        <li id="save">保存</li>
+        <li id="allclear">一括削除</li>
+    </ul>
+</main>
+<table id="list">
+<!-- ここに追加データが挿入される -->
+</table>
+<script>
+
+// 削除ボタンクリックイベント
+function onDeleteButtonClick(key) {
+    localStorage.removeItem(key);
+    refreshList();
+}
+
+// 編集ボタンクリックイベント
+function onEditButtonClick(element) {
+    const row = $(element).closest("tr");
+    const keyElement = row.find(".data-key");
+    const valueElement = row.find(".data-value");
+    const editButton = row.find(".edit-button");
+
+    const key = keyElement.text();
+    const value = valueElement.text();
+
+    row.addClass("edit-mode");
+    keyElement.html('<input type="text" class="edit-key" value="'+ key +'">');
+    valueElement.html('<textarea class="edit-value">' + value + '</textarea>');
+    editButton.html("編集完了");
+    editButton.attr("onclick", "onEditCompleteButtonClick(this)");
+}
+// 編集完了ボタンクリックイベント
+function onEditCompleteButtonClick(element) {
+    const row = $(element).closest("tr");
+    const keyElement = row.find(".edit-key");
+    const valueElement = row.find(".edit-value");
+    const editButton = row.find(".edit-button");
+
+    const key = keyElement.val();
+    const value = valueElement.val();
+
+    row.removeClass("edit-mode");
+    keyElement.replaceWith('<th class="data-key">' + key + '</th>');
+    valueElement.replaceWith('<td class="data-value">' + value + '</td>');
+    editButton.html("編集");
+    editButton.attr("onclick", "onEditButtonClick(this)");
+
+    const originalKey = row.find(".data-key").text();
+    localStorage.removeItem(originalKey);
+    localStorage.setItem(key, value);
+    refreshList();
+}
+
+// 保存ボタンクリックイベント
+$("#save").on("click",function(){
+    const key = $("#key").val();
+    const value = $("#memo").val();
+    localStorage.setItem(key,value);
+    refreshList();
+    $("#key").val('');
+    $("#memo").val('');
+});
+
+// 一括削除ボタンクリックイベント
+$("#allclear").on("click",function(){
+    localStorage.clear();
+    refreshList();
+    $("#key").val('');
+    $("#memo").val('');
+});
+
+// ページ読み込み時に保存データ取得して表示
+function refreshList() {
+    $("#list").empty();
+    for(let i=0; i<localStorage.length; i++){
+        const key   = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        const html = '<tr><th class="data-key">'+key+'</th><td class="data-value">'+value+'</td><td><button class="edit-button" tabindex="0" onclick="onEditButtonClick(this)">編集</button></td><td><button class="delete-button" onclick="onDeleteButtonClick(\''+key+'\')">削除</button></td></tr>';
+        $("#list").append(html);
+    }
+}
+
+refreshList();
+
+</script>
+<footer><small></small></footer>
+</body>
+</html>

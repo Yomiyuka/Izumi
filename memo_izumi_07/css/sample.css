@@ -1,0 +1,107 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  font-size: 32px;
+  width: 90%;
+}
+header {
+  text-align: center;
+}
+h1 {
+  font-size: 100%;
+}
+main {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+ul {
+  padding: 0;
+  display: table; /* 定義 */
+  table-layout: fixed;
+  position: relative;
+  border-spacing: 40px;
+  width: 70%;
+  font-size: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+li {
+  border: 1px solid #666;
+  display: table-cell; 
+  cursor: pointer;
+  color: #0d7dfd;
+}
+li:hover {
+  background: #0d7dfd;
+  color: #fff;
+}
+textarea {
+  margin: 10px auto;
+  width: 100%;
+  height: 200px;
+  font-size: 80%;
+  background-color: rgb(241, 239, 239);
+}
+#key {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 80%;
+  background-color: #e1efff;
+}
+table {
+  margin: 0 auto;
+  width: 100%;
+}
+th {
+  width: 30%;
+  font-size: 18px;
+  background-color: #d0e7fc;
+}
+td {
+  font-size: 16px;
+width: 70%;
+  background-color: rgb(241, 239, 239);
+}
+input {
+  margin: 10px 3%;
+  width: 100%;
+  height: 40px;
+  font-size: 80%;
+}
+#list {
+  text-align: left;
+}
+
+
+
+.delete-button {
+  background-color: red;
+color: #fff;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+margin-left: 5px;
+}
+
+.edit-button {
+  background-color: blue;
+color: #fff;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+margin-left: 5px;
+}
+.edit-key{
+width: 90%;
+  background-color: #d0e7fc;
+border: none;
+}
+.edit-value{
+  width: 90%;
+  background-color: rgb(241, 239, 239);
+  border: none;
+}
