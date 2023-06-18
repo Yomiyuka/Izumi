@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chatアプリ</title>
+</head>
+<style>
+    html {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: rgb(225, 145, 145);
+    }
+    .message {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .message .delete {
+        display: none;
+        margin-top: 5px;
+    }
+    .message:hover .delete {
+        display: inline;
+    }
+    .nameinput{
+        margin-top: 15px;
+    }
+    
+</style>
+
+<body>
+    <header>
+        <h1>LetterChat</h1>
+    </header>
+    <!-- コンテンツ表示画面 -->
+    <div>
+        <div id="output" style="overflow: auto;height: 300px;"></div>
+        <div class="nameinput">
+            <input type="text" id="uname" placeholder="名前">
+        </div>
+        <div>
+            <textarea name="" id="text" cols="34" rows="5" placeholder="内容"></textarea>
+        </div>
+            <div>
+                <button id="send">送信</button>
+                <button id="mail">手紙にする</button>
+            </div>           
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- JQuery -->
+    <!--** 以下Firebase **-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+            from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.2/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAQTT1bMUVhugxGXyRc4h1U2oA4Widll7Q",
+            authDomain: "fir-af07d.firebaseapp.com",
+            projectId: "fir-af07d",
+            storageBucket: "fir-af07d.appspot.com",
+            messagingSenderId: "692125940444",
+            appId: "1:692125940444:web:695985c5387f7eaef59219",
+            measurementId: "G-5VKGX213YW"
+        };
+
+               // Initialize Firebase
+               const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        //Realtime DBに接続する
+        const db = getDatabase(app);
+        const dbRef = ref(db, 'chat')
+
+        //送信ボタンが押されたら、データをDBに送信
+        $('#send').on("click", function () {
+            // 保存したいデータのオブジェクトを作る
+            const msg = {
+                uname: $("#uname").val(),
+                text: $("#text").val()
+            };
+            console.log(msg)
+            // 新規のデータを送れる状態にセット
+            const newPostRef = push(dbRef);
+            // DBに値を送信
+            set(newPostRef, msg);
+        });
+
+        onChildAdded(dbRef, function (data) {
+            const msg = data.val();
+            const key = data.key;
+            let h = '<div class="message">';
+            h += '<p>' + msg.uname + '</p>';
+            h += '<p>' + msg.text + '</p>';
+            h += '<button class="delete" data-key="' + key + '">削除</button>';
+            h += '</div>';
+            $("#output").append(h);
+        });
+
+        // DBの削除ボタンのダブルクリックイベントを設定
+        $(document).on("dblclick", ".delete", function () {
+            const key = $(this).data("key");
+            const confirmDelete = confirm("このメッセージを削除しますか？");
+            if (confirmDelete) {
+                const msgRef = ref(db, 'chat/' + key);
+                remove(msgRef);
+            }
+        });
+    </script>
+</body>
+
+</html>
