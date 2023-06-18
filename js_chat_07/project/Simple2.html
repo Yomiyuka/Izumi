@@ -112,7 +112,7 @@
         });
 
         // DBの削除ボタンのダブルクリックイベントを設定
-        $(document).on("dblclick", ".delete", function () {
+        $(document).on("click", ".delete", function () {
             const key = $(this).data("key");
             const confirmDelete = confirm("このメッセージを削除しますか？");
             if (confirmDelete) {
