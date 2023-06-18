@@ -12,6 +12,7 @@
         text-align: center;
         background-color: rgb(225, 145, 145);
     }
+
     .message {
         display: flex;
         flex-direction: column;
@@ -21,17 +22,19 @@
         padding: 10px;
         margin-bottom: 10px;
     }
+
     .message .delete {
         display: none;
         margin-top: 5px;
     }
+
     .message:hover .delete {
         display: inline;
     }
-    .nameinput{
+
+    .nameinput {
         margin-top: 15px;
     }
-    
 </style>
 
 <body>
@@ -47,11 +50,11 @@
         <div>
             <textarea name="" id="text" cols="34" rows="5" placeholder="内容"></textarea>
         </div>
-            <div>
-                <button id="send">送信</button>
-                <button id="mail">手紙にする</button>
-            </div>           
+        <div>
+            <button id="send">送信</button>
+            <button id="mail">手紙にする</button>
         </div>
+    </div>
     </div>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -78,8 +81,8 @@
             measurementId: "G-5VKGX213YW"
         };
 
-               // Initialize Firebase
-               const app = initializeApp(firebaseConfig);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
         //Realtime DBに接続する
